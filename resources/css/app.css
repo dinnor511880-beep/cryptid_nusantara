@@ -1,0 +1,114 @@
+@import url('https://fonts.googleapis.com/css2?family=Creepster&family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    body {
+        @apply bg-abyss-50 text-gray-200;
+    }
+
+    ::selection {
+        @apply bg-blood-600 text-white;
+    }
+
+    ::-webkit-scrollbar {
+        width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+        @apply bg-abyss-100;
+    }
+    ::-webkit-scrollbar-thumb {
+        @apply bg-blood-800 rounded-full;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+        @apply bg-blood-600;
+    }
+}
+
+@layer components {
+    .horror-card {
+        @apply bg-abyss-100 border border-gray-800/50 rounded-xl shadow-horror;
+        backdrop-filter: blur(10px);
+    }
+
+    .horror-card-hover {
+        @apply horror-card transition-all duration-300;
+    }
+    .horror-card-hover:hover {
+        @apply border-blood-800/50 shadow-horror-lg;
+        transform: translateY(-2px);
+    }
+
+    .horror-input {
+        @apply bg-abyss-200 border border-gray-700/50 text-gray-200 rounded-lg px-4 py-2.5
+               focus:border-blood-500 focus:ring-1 focus:ring-blood-500/50
+               placeholder-gray-500 transition-all duration-200;
+    }
+
+    .horror-btn {
+        @apply inline-flex items-center justify-center px-6 py-2.5 
+               bg-gradient-to-r from-blood-700 to-blood-600 
+               border border-blood-500/30 rounded-lg
+               font-semibold text-sm text-white uppercase tracking-wider
+               hover:from-blood-600 hover:to-blood-500
+               focus:outline-none focus:ring-2 focus:ring-blood-500/50 focus:ring-offset-2 focus:ring-offset-abyss-50
+               active:from-blood-800 active:to-blood-700
+               transition-all duration-200 shadow-lg;
+    }
+
+    .horror-btn-phantom {
+        @apply inline-flex items-center justify-center px-6 py-2.5
+               bg-gradient-to-r from-phantom-700 to-phantom-600
+               border border-phantom-500/30 rounded-lg
+               font-semibold text-sm text-white uppercase tracking-wider
+               hover:from-phantom-600 hover:to-phantom-500
+               focus:outline-none focus:ring-2 focus:ring-phantom-500/50
+               transition-all duration-200 shadow-lg;
+    }
+
+    .horror-label {
+        @apply block font-medium text-sm text-gray-400 mb-1 tracking-wide uppercase;
+    }
+
+    .horror-link {
+        @apply text-blood-400 hover:text-blood-300 transition-colors duration-200 underline decoration-blood-800 underline-offset-2;
+    }
+
+    .fog-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 0;
+        background:
+            radial-gradient(ellipse at 20% 50%, rgba(220, 38, 38, 0.03) 0%, transparent 50%),
+            radial-gradient(ellipse at 80% 20%, rgba(107, 33, 168, 0.04) 0%, transparent 50%),
+            radial-gradient(ellipse at 50% 80%, rgba(220, 38, 38, 0.02) 0%, transparent 50%);
+        animation: fog 8s ease-in-out infinite;
+    }
+
+    .blood-divider {
+        @apply border-0 h-px;
+        background: linear-gradient(90deg, transparent, rgba(220, 38, 38, 0.3), transparent);
+    }
+
+    .danger-badge {
+        @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold;
+    }
+    .danger-low {
+        @apply danger-badge bg-emerald-900/50 text-emerald-300 border border-emerald-700/30;
+    }
+    .danger-medium {
+        @apply danger-badge bg-yellow-900/50 text-yellow-300 border border-yellow-700/30;
+    }
+    .danger-high {
+        @apply danger-badge bg-blood-900/50 text-blood-300 border border-blood-700/30;
+    }
+    .danger-extreme {
+        @apply danger-badge bg-phantom-900/50 text-phantom-200 border border-phantom-700/30 animate-pulse-glow;
+    }
+}
