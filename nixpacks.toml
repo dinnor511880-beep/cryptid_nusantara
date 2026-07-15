@@ -1,9 +1,5 @@
-[phases.setup]
-nixPkgs = ['php81', 'php81Extensions.pdo', 'php81Extensions.pdo_sqlite', 'php81Extensions.mbstring', 'php81Extensions.xml', 'php81Extensions.curl', 'php81Extensions.tokenizer', 'php81Extensions.dom', 'php81Extensions.fileinfo']
-
-[phases.install]
+[phases.build]
 cmds = [
-    'curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer',
     'composer install --no-dev --optimize-autoloader',
     'npm ci',
     'npm run build'
